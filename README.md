@@ -3,6 +3,8 @@ With usage of IBKR's APIs, we can automate the trading of options based on the i
 
 Working with 2 semi-retired traders, we are developing a tool to automate a various parts of the trading process of a variety of options strategies, proven profitable over the last decade.
 
+![QuietQuant](./public/images/QuietQuant.png)
+
 # Get started
 1. Clone the repo
 1. Install the requirements with `pip install -r requirements.txt`
@@ -10,7 +12,7 @@ Working with 2 semi-retired traders, we are developing a tool to automate a vari
 1. Enjoy!
 
 # Topics touched on in this project:
-## Software Development 
+## Software Development
 ### Tech Stack
 1. Python
 1. Pandas for technical indicators
@@ -78,6 +80,10 @@ Limit 250 requests per day and uses FinancialModelingPrep under the hood (only U
 Limit 1000 requests per day, max 50 per hour
 - docs link: https://www.tiingo.com/documentation/fundamentals
 
+# Regularly used terminologies
+| Term | Description |
+| DTE | Days to Expiry | 
+
 
 # Improvements and Optimizations:
 - [X] Handled missing financial data case
@@ -94,9 +100,23 @@ Limit 1000 requests per day, max 50 per hour
 - [ ] Execute trades through IBKR API
 - [ ] How often does the intrinsic value change? How often should we re-calculate it? -> Can store the intrinsic value in a database and update it every 3 months.
 - [X] User authentication
+- [ ] Google Authenticaiton
+- [ ] Score system for top options to trade
+- [ ] Efficient finding of household name stocks against list of undervalued stocks.
+- [ ] Bot checks all possible before deciding which ones to go for based on available portfolio. and best options ranked out of all those, considering buying power use. 
+- [ ] Bot make sure its not bank
 
 
 # Change log:
+19 Jun:
+1. Google Authentication
+
+18 Jun: 
+1. Improve Kelly Criterion calculation by agreeing on a standard way to decide how to determine "loss" amount.
+1. Add points system to list of top stocks to trade
+1. Pull options chain from IBKR
+1. Move to Fly.io
+
 14 Jun:
 1. Implemented latest news API for growth rate estimation for individual stock analysis.
 1. Used gpt-4o with strict format restrictions for growth rate estimation with news articles. 
@@ -152,3 +172,14 @@ A: Yes
 # Dev Notes
 ### Creating requirements.txt with pipreqs: 
 `$pipreqs . --encoding=iso-8859-1 --ignore optionstrader/ --force`
+
+### After deploying to Fly, to install chrome driver to support selenium
+fly ssh console -s -a options-trading-automated
+apt-get update
+apt-get install -y wget gnupg
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+apt-get update
+apt-get install -y google-chrome-stable
+
+
