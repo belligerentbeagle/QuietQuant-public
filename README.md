@@ -1,7 +1,6 @@
 # Options trading automated
-With usage of IBKR's APIs, we can automate the trading of options based on the intrinsic value of the underlying stock. The manual strategy generates an estimated 20% per month on a 6 figure portfolio. 
 
-Working with 2 semi-retired traders, we are developing a tool to automate a various parts of the trading process of a variety of options strategies, proven profitable over the last decade.
+A S$30K funded project to develop an automated options trading program for two semi-retired engineers-turned-traders. The proprietary strategy generates an estimated 20% annually on a 7 figure portfolio. 
 
 ![QuietQuant](./public/images/QuietQuant.png)
 
