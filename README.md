@@ -1,4 +1,4 @@
-# Options trading automated
+# QuietQuant
 
 A S$30K funded project to develop an automated options trading program for two semi-retired engineers-turned-traders. The proprietary strategy generates an estimated 20% annually on a 7 figure portfolio. 
 
@@ -7,12 +7,15 @@ A S$30K funded project to develop an automated options trading program for two s
 # Get started
 1. Clone the repo
 1. Install the requirements with `pip install -r requirements.txt`
+1. Run `pip install ibapi` to install the Interactive Brokers API
 1. Run the streamlit app with `streamlit run main.py`
 1. Enjoy!
 
 # Topics touched on in this project:
 ## Software Development
 ### Tech Stack
+1. Cloud Deployment
+1. Shell Scripting
 1. Python
 1. Pandas for technical indicators
 1. Streamlit
@@ -26,6 +29,7 @@ A S$30K funded project to develop an automated options trading program for two s
 
 ### Data Structures and Algorithms
 1. OOP
+1. State Management
 1. Web scraping
 1. User Authentication
 1. IBKR API usage (trade execution)
@@ -83,32 +87,57 @@ Limit 1000 requests per day, max 50 per hour
 | Term | Description |
 | DTE | Days to Expiry | 
 
-
 # Improvements and Optimizations:
 - [X] Handled missing financial data case
 - [X] Fail safe: Fetch financial data from 2 sources - Tiingo and Yahoo Finance to compare 3FS discrepency. (5% tolerance)
 - [X] Automate finding of discount rate as well.
 - [X] Add current stock price comparison
 - [X] Error handling -> if data not available. Write error message as well.
-- [ ] Concurrent fetching of data
+- [X] State Management, saving time from making API calls repeatedly. ~60% speedup on load times.
 - [X] Scrape Options data from online source 
 - [X] Add and apply Technical Analysis module
-- [ ] Implement Kelly-Criterion for portfolio optimization
-- [ ] Average growth rates for 3-tier growth rate estimation
+- [X] Implement Kelly-Criterion for portfolio optimization
+- [X] User authentication
 - [X] AI sentiment analysis for growth rate estimation
+- [X] Pull Options Chain from IBKR API
+- [ ] Sort, Rank and calculate Kelly and no. of contracts to trade on Options Chain from IBKR API
 - [ ] Execute trades through IBKR API
 - [ ] How often does the intrinsic value change? How often should we re-calculate it? -> Can store the intrinsic value in a database and update it every 3 months.
-- [X] User authentication
+- [ ] Concurrent fetching of data
+- [ ] Average growth rates for 3-tier growth rate estimation
 - [ ] Google Authenticaiton
 - [ ] Score system for top options to trade
 - [ ] Efficient finding of household name stocks against list of undervalued stocks.
 - [ ] Bot checks all possible before deciding which ones to go for based on available portfolio. and best options ranked out of all those, considering buying power use. 
 - [ ] Bot make sure its not bank
 
+# Requested features (Active Log to be changed and cleared)
+- [ ] Use yahoofinance for additional FS data to obtain an average, more accurate intrinsic value.
+- [ ] Add 2 points for household name
+- [ ] Cashflow to use TTM
+
 
 # Change log:
-19 Jun:
-1. Google Authentication
+7 Jul:
+1. Enable single ticker lookup with FinancialModellingPrep. Was previously using AlphaVantage.
+1. Option to disable technical analysis checks.
+1. Range selection of top X to top Y stocks.
+
+5 Jul:
+1. Implemented Back up discount rate provider should financetoolkit fail.
+
+3 Jul:
+1. Fixed bugs in individual intrinsic value calculation
+1. Used paid API key!
+1. Default Kelly's loss amount to 2.5%. 
+
+30 Jun:
+1. Ensure varying currencies used in FS reporting is accounted for in calculating Intrinsic Value.
+
+23 Jun:
+1. State Management, saving time from making API calls repeatedly. ~60% speedup on load times.
+1. Implemented Kelly Criterion for user.
+1. General UI improvements, making sliders into number inputs instead.
 
 18 Jun: 
 1. Improve Kelly Criterion calculation by agreeing on a standard way to decide how to determine "loss" amount.
@@ -173,7 +202,7 @@ A: Yes
 `$pipreqs . --encoding=iso-8859-1 --ignore optionstrader/ --force`
 
 ### After deploying to Fly, to install chrome driver to support selenium
-fly ssh console -s -a options-trading-automated
+fly ssh console -s -a app-name
 apt-get update
 apt-get install -y wget gnupg
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
