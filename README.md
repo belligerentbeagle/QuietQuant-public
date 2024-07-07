@@ -69,12 +69,9 @@ Limit 1000 requests per day
 - docs link: https://newsapi.org/docs/get-started
 - pricing link: https://newsapi.org/pricing
 
-## AlphaVantage API use:
-Limit 25 requests per day
-- docs link: https://www.alphavantage.co/documentation/
-
 ## FinanceToolkit (opensource)
-Limit 250 requests per day and uses FinancialModelingPrep under the hood (only US stocks) and free version only has annual data
+(Starter Plan @ $305SGD/yr) Limit 300 requests per minute and uses FinancialModelingPrep under the hood (only US stocks)
+- provider link: https://financialmodelingprep.com
 - docs link: https://www.jeroenbouma.com/projects/financetoolkit/docs
 - pypi link: https://pypi.org/project/financetoolkit/
 
@@ -82,6 +79,10 @@ Limit 250 requests per day and uses FinancialModelingPrep under the hood (only U
 ## Tiingo
 Limit 1000 requests per day, max 50 per hour
 - docs link: https://www.tiingo.com/documentation/fundamentals
+
+## AlphaVantage API use:
+Limit 25 requests per day
+- docs link: https://www.alphavantage.co/documentation/
 
 # Regularly used terminologies
 | Term | Description |
