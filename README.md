@@ -62,7 +62,6 @@ For this project, my original plan was to use [FinBERT](https://huggingface.co/P
 
 I then switched to using GPT-4 with strict format restrictions for growth rate estimation with news articles.
 
-
 # Data APIs
 ## NewsAPI.org use:
 Limit 1000 requests per day
@@ -101,24 +100,38 @@ Limit 25 requests per day
 - [X] User authentication
 - [X] AI sentiment analysis for growth rate estimation
 - [X] Pull Options Chain from IBKR API
+- [X] Score system for top options to trade
+- [X] Efficient finding of household name stocks against list of undervalued stocks.
 - [ ] Sort, Rank and calculate Kelly and no. of contracts to trade on Options Chain from IBKR API
 - [ ] Execute trades through IBKR API
 - [ ] How often does the intrinsic value change? How often should we re-calculate it? -> Can store the intrinsic value in a database and update it every 3 months.
 - [ ] Concurrent fetching of data
 - [ ] Average growth rates for 3-tier growth rate estimation
 - [ ] Google Authenticaiton
-- [ ] Score system for top options to trade
-- [ ] Efficient finding of household name stocks against list of undervalued stocks.
 - [ ] Bot checks all possible before deciding which ones to go for based on available portfolio. and best options ranked out of all those, considering buying power use. 
 - [ ] Bot make sure its not bank
+- [ ] Shift forexrate API 
 
 # Requested features (Active Log to be changed and cleared)
-- [ ] Use yahoofinance for additional FS data to obtain an average, more accurate intrinsic value.
-- [ ] Add 2 points for household name
-- [ ] Cashflow to use TTM
-
+- [X] Use yahoofinance for additional FS data to obtain an average, more accurate intrinsic value.
+- [X] Cashflow to use TTM
+- [X] Add 1 point for household name
+- [X] View stock's sector
 
 # Change log:
+17 Jul:
+1. Added Sector to the table of results.
+1. Bug fix for Yahoo Finance reporting in different currency.
+
+13 Jul:
+1. Improved data pulling and calculation clarity with secondary data source. 
+1. Added Go to Stock's Yahoo Finance page link.
+
+
+12 Jul:
+1. Usage of TTM Operational Cashflow instead of the last year's data for Intrinsic Value calculation.
+1. Draws financial data from yahoo finance as a comparison to FinancialModelingPrep.
+
 7 Jul:
 1. Enable single ticker lookup with FinancialModellingPrep. Was previously using AlphaVantage.
 1. Option to disable technical analysis checks.
