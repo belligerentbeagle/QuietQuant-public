@@ -62,6 +62,17 @@ For this project, my original plan was to use [FinBERT](https://huggingface.co/P
 
 I then switched to using GPT-4 with strict format restrictions for growth rate estimation with news articles.
 
+## Phase 5: Kelly Criterion for portfolio optimization
+![KellyCalculator](./public/images/KellyCalculator.png)
+
+## Phase 6: Options Contracts Scanner Engine (OCSE)
+![OCSE1](./public/images/OCSE1.png)
+![OCSE2](./public/images/OCSE2.png)
+
+## Additional Features:
+While some companies can have a good intrinsic value, their operational cashflow might tell a deeper story. This is a red flag for the company's future prospects, and hence, a penalty is applied to the stock's score, if such patterns are recognized! (Was interesting codifying these patterns)
+![BadQuarterlyCashflow](./public/images/BadQuarterlyCashflow.png)
+
 # Data APIs
 ## NewsAPI.org use:
 Limit 1000 requests per day
@@ -117,10 +128,30 @@ Limit 25 requests per day
 - [X] Cashflow to use TTM
 - [X] Add 1 point for household name
 - [X] View stock's sector
+- [ ] Improve trade selection on options contract scanner engine (OCSE)
 
 # Change log:
+8 Aug:
+1. Codifying Bad quarterly operational cashflow where it penalizes the score of a stock.
+
+7 Aug:
+1. Minor bug fixes where price data was returning None when yahoo data fails to download
+
+4 Aug:
+1. Added Stock undervalued calculation, supporting a new neutral-bearish strategy.
+1. Stocks sorted by Score
+
+3 Aug:
+1. Add trade selection option
+
+Late Jul - Aug:
+1. Building Options Scanning Engine -> Pulling Options Chain from IBKR API
+2. Filter and sort tradeable options
+3. Calculate cashoutlay, kelly %, ROI for tradeable options
+
 17 Jul:
-1. Added Sector to the table of results.
+1. Added company sector to the table of results.
+1. Added business summary for each company.
 1. Bug fix for Yahoo Finance reporting in different currency.
 
 13 Jul:
@@ -204,11 +235,6 @@ Limit 25 requests per day
 1. https://www.alphavantage.co/documentation/
 1. https://www.tiingo.com/documentation/fundamentals
 1. https://rapidapi.com/apidojo/api/yahoo-finance1
-
-
-# Uncertain Parts/Details:
-> Q: When missing financial data for some companies, for e.g. shortTermDebt is None, should we stop the calc. of Intrinsic Value?
-A: Yes
 
 
 # Dev Notes
