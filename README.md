@@ -1,5 +1,7 @@
 # QuietQuant
 
+[![wakatime](https://wakatime.com/badge/user/018cc5a8-3c44-4f51-a6f0-5021ac41b5e1/project/99679232-7a26-439e-a650-18032d07b387.svg)](https://wakatime.com/badge/user/018cc5a8-3c44-4f51-a6f0-5021ac41b5e1/project/99679232-7a26-439e-a650-18032d07b387)
+
 A S$30K funded project to develop an automated options trading program for two semi-retired engineers-turned-traders. The proprietary strategy generates an estimated 20% annually on a 7 figure portfolio. 
 
 ![QuietQuant](./public/images/QuietQuant.png)
@@ -128,9 +130,21 @@ Limit 25 requests per day
 - [X] Cashflow to use TTM
 - [X] Add 1 point for household name
 - [X] View stock's sector
-- [ ] Improve trade selection on options contract scanner engine (OCSE)
+- [X] Improve trade selection on options contract scanner engine (OCSE)
+- [ ] Improve SMA criterias to be 50, 150, 200
+- [ ] Use yfinance's cache function to speed up data fetching
+- [ ] More accurate growth rate prediction: If bad quarterly OCF recently, then 0.0 ST, MT growth. Else we calculate average annual growth rate of past 3 years, if no past 3 years, then 1% growth rate. Long term by default is 3% (GDP).
+- [ ] do sth related to getting more stocks?
+- [ ] Leave sources unfilitered for shorting as well?
+- [ ] Avoiding shorting stocks w shortterm uptrend breakout. -> Mean that there're believers wthat stock will turn around soon.
 
 # Change log:
+13 Aug:
+1. Improve trade selection on options contract scanner engine (OCSE)
+
+9 Aug:
+1. Added check for adverse operational cashflow patterns
+
 8 Aug:
 1. Codifying Bad quarterly operational cashflow where it penalizes the score of a stock.
 
@@ -249,5 +263,9 @@ wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
 sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 apt-get update
 apt-get install -y google-chrome-stable
+
+### Killing python process blocking new IBKR client connection:
+ps -ef|grep python
+kill -9 <pid>
 
 
