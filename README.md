@@ -112,11 +112,14 @@ Limit 25 requests per day
 - docs link: https://www.alphavantage.co/documentation/
 
 # Regularly used terminologies
+
 | Term | Description |
-| DTE | Days to Expiry | 
+|------|-------------|
+| DTE | Days to Expiry |
 | IV | Implied Volatility |
-| IV | Intrinsic Value | (difference inferred from context)
+| IV | Intrinsic Value (difference inferred from context) |
 | OCSE | Options Contract Scanner Engine |
+
 
 
 # Change log:
