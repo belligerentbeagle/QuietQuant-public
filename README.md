@@ -88,10 +88,10 @@ I then switched to using GPT-4 with strict format restrictions for growth rate e
 ![OCSE2](./public/images/OCSE2.png)
 
 ## Phase 7: Complete Automation of Research, Live Data Analysis, Trade Execution and Portfolio Management 
-This phase is complete. 
+QuietQuant is now fully automated, running end-to-end analysis and trading autonomously, maintaining a continuous cycle of evaluation, optimization, and portfolio management. It gathers data, calculates intrinsic values, analyzes sentiment, executes risk-managed trades, with no human bias and intervention.
 
 # Data APIs
-## NewsAPI.org use:
+## NewsAPI.org:
 Limit 1000 requests per day
 - docs link: https://newsapi.org/docs/get-started
 - pricing link: https://newsapi.org/pricing
@@ -114,53 +114,10 @@ Limit 25 requests per day
 # Regularly used terminologies
 | Term | Description |
 | DTE | Days to Expiry | 
+| IV | Implied Volatility |
+| IV | Intrinsic Value | (difference inferred from context)
+| OCSE | Options Contract Scanner Engine |
 
-# Improvements and Optimizations:
-- [X] Handled missing financial data case
-- [X] Fail safe: Fetch financial data from 2 sources - Tiingo and Yahoo Finance to compare 3FS discrepency. (5% tolerance)
-- [X] Automate finding of discount rate as well.
-- [X] Add current stock price comparison
-- [X] Error handling -> if data not available. Write error message as well.
-- [X] State Management, saving time from making API calls repeatedly. ~60% speedup on load times.
-- [X] Scrape Options data from online source 
-- [X] Add and apply Technical Analysis module
-- [X] Implement Kelly-Criterion for portfolio optimization
-- [X] User authentication
-- [X] AI sentiment analysis for growth rate estimation
-- [X] Pull Options Chain from IBKR API
-- [X] Score system for top options to trade
-- [X] Efficient finding of household name stocks against list of undervalued stocks.
-- [X] Sort, Rank and calculate Kelly and no. of contracts to trade on Options Chain from IBKR API
-- [X] Execute trades through IBKR API
-- [ ] How often does the intrinsic value change? How often should we re-calculate it? -> Can store the intrinsic value in a database and update it every 3 months.
-- [ ] Concurrent fetching of data
-- [ ] Average growth rates for 3-tier growth rate estimation
-- [ ] Google Authenticaiton
-- [ ] Bot checks all possible before deciding which ones to go for based on available portfolio. and best options ranked out of all those, considering buying power use. 
-- [ ] Bot make sure its not bank
-- [ ] Shift forexrate API 
-
-# Requested features (Active Log to be changed and cleared)
-- [X] Use yahoofinance for additional FS data to obtain an average, more accurate intrinsic value.
-- [X] Cashflow to use TTM
-- [X] Add 1 point for household name
-- [X] View stock's sector
-- [X] Improve trade selection on options contract scanner engine (OCSE)
-- [X] Improve SMA criterias to be 50, 150, 200
-- [X] change to default include ticker sources, not exclude.
-- [X] Get tickers from list curated by human.
-- [X] qq: Need to shift the data set of train features up by one, so we can use the previous quarter’s data to predict the upcoming cashflow growth of the next quarterwith 
-- [ ] Use yfinance's cache function to speed up data fetching
-- [ ] More accurate growth rate prediction: If bad quarterly OCF recently, then 0.0 ST, MT growth. Else we calculate average annual growth rate of past 3 years, if no past 3 years, then 1% growth rate. Long term by default is 3% (GDP).
-- [ ] Do sth related to getting more stocks?
-- [ ] Leave sources unfilitered for shorting as well?
-- [ ] Avoiding shorting stocks w shortterm uptrend breakout. -> Mean that there're believers that stock will turn around soon.
-- [ ] scrape https://marketchameleon.com/volReports/VolatilityRankings as optionsellerroi replacement.
-- [ ] qq: look at a company’s war chest as well
-- [ ] Make time series stationary by: 1. Differencing 2. Seasonal differencing 3. Variance stabilizing transformation
-- [ ] Use Market Scanner for stock universe scoping. 
-- [ ] Build Portfolio Management System -> Checking available cash, buying power, before deciding how many contracts to trade: Allocator should be initialize with buying power, (after deducting pending orders and potential cash outlay for current trades) Either buyingpower or availableFunds. See https://ibkrcampus.com/campus/ibkr-api-page/twsapi-ref/#acctsumtags-ref and test with a pending order.
-- [ ] Build IBKR's Scanner for coveted stocks
 
 # Change log:
 14 Jun 2025:
@@ -309,23 +266,4 @@ Late Jul - Aug 2024:
 1. https://www.alphavantage.co/documentation/
 1. https://www.tiingo.com/documentation/fundamentals
 1. https://rapidapi.com/apidojo/api/yahoo-finance1
-
-
-# Dev Notes
-### Creating requirements.txt with pipreqs: 
-`$pipreqs . --encoding=iso-8859-1 --ignore optionstrader/ --force`
-
-### After deploying to Fly, to install chrome driver to support selenium
-fly ssh console -s -a app-name
-apt-get update
-apt-get install -y wget gnupg
-wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
-sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
-apt-get update
-apt-get install -y google-chrome-stable
-
-### Killing python process blocking new IBKR client connection:
-ps -ef|grep python
-kill -9 <pid>
-
 
