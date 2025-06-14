@@ -90,11 +90,6 @@ I then switched to using GPT-4 with strict format restrictions for growth rate e
 ## Phase 7: Complete Automation of Research, Live Data Analysis, Trade Execution and Portfolio Management 
 This phase is complete. 
 
-
-## Additional Features:
-While some companies can have a good intrinsic value, their operational cashflow might tell a deeper story. This is a red flag for the company's future prospects, and hence, a penalty is applied to the stock's score, if such patterns are recognized! (Was interesting codifying these patterns)
-![BadQuarterlyCashflow](./public/images/BadQuarterlyCashflow.png)
-
 # Data APIs
 ## NewsAPI.org use:
 Limit 1000 requests per day
