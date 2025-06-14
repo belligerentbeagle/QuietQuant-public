@@ -87,9 +87,8 @@ I then switched to using GPT-4 with strict format restrictions for growth rate e
 ![OCSE2](./public/images/OCSE2.png)
 
 ## Phase 7: Complete Automation of Research, Live Data Analysis, Trade Execution and Portfolio Management 
-The phase is complete. 
+This phase is complete. 
 
-Write up coming (22 Mar 2025 last edited)!
 
 ## Additional Features:
 While some companies can have a good intrinsic value, their operational cashflow might tell a deeper story. This is a red flag for the company's future prospects, and hence, a penalty is applied to the stock's score, if such patterns are recognized! (Was interesting codifying these patterns)
@@ -164,10 +163,13 @@ Limit 25 requests per day
 - [ ] qq: look at a company’s war chest as well
 - [ ] Make time series stationary by: 1. Differencing 2. Seasonal differencing 3. Variance stabilizing transformation
 - [ ] Use Market Scanner for stock universe scoping. 
-- [ ] Build Portfolio Management System -> Checking available cash, buying power, before deciding how many contracts to trade.
+- [ ] Build Portfolio Management System -> Checking available cash, buying power, before deciding how many contracts to trade: Allocator should be initialize with buying power, (after deducting pending orders and potential cash outlay for current trades)
 - [ ] Build IBKR's Scanner for coveted stocks
 
 # Change log:
+14 Jun 2025;
+1. Bug fixes
+
 22 Mar 2025:
 1. Improve IBKR connector, add error handling, and test code
 
