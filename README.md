@@ -8,7 +8,8 @@ A S$30K funded project to develop an automated options trading program for two s
 
 # Get started
 1. Clone the repo
-1. Install the requirements with `pip install -r requirements.txt`
+1. Create an environment with Python 3.11.8 or later
+1. Install the requirements with `pip install -r requirements.txt` in the environment
 1. Run `pip install ibapi` to install the Interactive Brokers API
 1. Run the streamlit app with `streamlit run main.py`
 1. Enjoy!
@@ -163,12 +164,12 @@ Limit 25 requests per day
 - [ ] qq: look at a company’s war chest as well
 - [ ] Make time series stationary by: 1. Differencing 2. Seasonal differencing 3. Variance stabilizing transformation
 - [ ] Use Market Scanner for stock universe scoping. 
-- [ ] Build Portfolio Management System -> Checking available cash, buying power, before deciding how many contracts to trade: Allocator should be initialize with buying power, (after deducting pending orders and potential cash outlay for current trades)
+- [ ] Build Portfolio Management System -> Checking available cash, buying power, before deciding how many contracts to trade: Allocator should be initialize with buying power, (after deducting pending orders and potential cash outlay for current trades) Either buyingpower or availableFunds. See https://ibkrcampus.com/campus/ibkr-api-page/twsapi-ref/#acctsumtags-ref and test with a pending order.
 - [ ] Build IBKR's Scanner for coveted stocks
 
 # Change log:
-14 Jun 2025;
-1. Bug fixes
+14 Jun 2025:
+1. Bug fixes: yfinance getting rate limited.
 
 22 Mar 2025:
 1. Improve IBKR connector, add error handling, and test code
